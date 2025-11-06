@@ -16,20 +16,17 @@ plt.rcParams['axes.unicode_minus'] = False
 # --- 在 streamlit 主頁加入 ---
 st.markdown("""
 ### 說明
-本程式可視化油槽內部油泥量之3D分布結果。支援 Excel 上傳與手動輸入座標，並可自訂油槽參數、柱狀圖顏色與透明度。  
+本程式可視化油槽內部油泥量之3D分布結果。
+支援 Excel 上傳與手動輸入座標，並可自訂油槽參數、柱狀圖顏色與透明度。  
 操作方式：
 - 設定左側參數與數據
 - 點擊「執行」可動態出圖，右側可下載 PNG 圖檔與原始數據
-
-### 作者聯絡
-- 作者：Minda
-- 若此工具對你有幫助或遇到任何問題，歡迎聯絡/反饋！
 """)
 
 # 頁面參數
 st.set_page_config(page_title="油槽內油泥分布圖", layout="wide")
 st.sidebar.header("油槽參數設定")
-tank_name = st.sidebar.text_input("602 ", value="  Oil Tank_3D Sludge Distribution Map")
+tank_name = st.sidebar.text_input("油槽名稱", value="S602 Oil Tank_3D Sludge Distribution Map")
 radius = st.sidebar.number_input("油槽半徑(公尺)", value=45.73, min_value=0.1)
 height = st.sidebar.number_input("油槽高度(公尺)", value=3.0, min_value=0.1)
 grid_points = st.sidebar.slider("解析度(個點數)", min_value=10, max_value=100, value=50)
@@ -113,10 +110,10 @@ if (data is not None) and run_btn:
                 [0, height], color='gray', linewidth=1.2, alpha=frame_alpha)
 
     # 東南西北
-    compass = {'North':'North', 'East':'East', 'South':'South', 'West':'West'}
+    compass = {'N':'N', 'E':'E', 'S':'S', 'W':'W'}
     a1_angle_rad = np.arctan2(scaled_y[0], scaled_x[0]) if len(scaled_x) > 0 else 0
     base_deg = np.degrees(a1_angle_rad) % 360
-    offsets = {'North':0, 'East':90, 'South':180, 'West':270}
+    offsets = {'N':0, 'E':90, 'S':180, 'W':270}
     for key, ch in compass.items():
         deg = base_deg + offsets[key]
         rad = np.radians(deg)
@@ -172,6 +169,11 @@ if (data is not None) and run_btn:
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
 
+st.markdown("""
+### 作者聯絡
+- 作者：Minda
+- 若此工具對你有幫助或遇到任何問題，歡迎聯絡/反饋！
+""")
 
 
 
