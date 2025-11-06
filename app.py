@@ -9,7 +9,8 @@ import io
 import matplotlib.font_manager as fm
 
 # 中文字型配置（多備一個總會有一種中！）
-plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'DFKai-SB', 'Arial Unicode MS', 'Heiti TC', 'SimHei', 'sans-serif']
+fontname = 'Noto Sans CJK TC'  # 或你系統有的字型
+plt.rcParams['font.sans-serif'] = [fontname, 'Arial Unicode MS', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False
 
 # --- 在 streamlit 主頁加入 ---
@@ -136,9 +137,9 @@ if (data is not None) and run_btn:
                         color='black', fontsize=10, fontweight='bold', ha='center', va='bottom',
                         bbox=dict(facecolor='white', alpha=0.3, edgecolor='none'))
 
-    ax.set_xlabel('X (公尺)', fontsize=14)
-    ax.set_ylabel('Y (公尺)', fontsize=14)
-    ax.set_zlabel('高度 Z (公尺)', fontsize=14)
+    ax.set_xlabel('X (公尺)', fontsize=14, fontname=fontname)
+    ax.set_ylabel('Y (公尺)', fontsize=14, fontname=fontname)
+    ax.set_zlabel('高度 Z (公尺)', fontsize=14, fontname=fontname)
     ax.set_title(tank_name, fontsize=22, fontweight='bold', loc='center')
     ax.set_xlim(scaled_radius, -scaled_radius)
     ax.set_ylim(scaled_radius, -scaled_radius)
@@ -170,5 +171,6 @@ if (data is not None) and run_btn:
     st.caption("Designed by Minda (油槽/可調參數/色階)")
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
+
 
 
