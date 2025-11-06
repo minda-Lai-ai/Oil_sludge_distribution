@@ -110,6 +110,26 @@ if (data is not None) and run_btn:
         ax.plot([scaled_radius * np.cos(t_rad)]*2, [scaled_radius * np.sin(t_rad)]*2,
                 [0, height], color='gray', linewidth=1.2, alpha=frame_alpha)
 
+    #MINDA    
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+    
+    theta_top = np.linspace(0, 2*np.pi, 200)
+    x_top_circle = scaled_radius * np.cos(theta_top)
+    y_top_circle = scaled_radius * np.sin(theta_top)
+    z_top_circle = np.ones_like(theta_top) * height
+    verts = [list(zip(x_top_circle, y_top_circle, z_top_circle))]
+    
+    # 透明圓面
+    ax.add_collection3d(
+        Poly3DCollection(verts, facecolors='blue', alpha=0.03, linewidths=0)
+    )
+    # 外圍線
+    ax.plot(
+        x_top_circle, y_top_circle, z_top_circle, 
+        color='blue', linewidth=2.5, alpha=1.0, zorder=1000
+    )
+    #MINDA
+    
     # 東南西北
     compass = {'N':'N', 'E':'E', 'S':'S', 'W':'W'}
     a1_angle_rad = np.arctan2(scaled_y[0], scaled_x[0]) if len(scaled_x) > 0 else 0
@@ -175,6 +195,7 @@ st.markdown("""
 - 作者：Minda
 - 若此工具對你有幫助或遇到任何問題，歡迎聯絡/反饋！
 """)
+
 
 
 
