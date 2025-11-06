@@ -29,7 +29,7 @@ st.markdown("""
 # 頁面參數
 st.set_page_config(page_title="油槽內油泥分布圖", layout="wide")
 st.sidebar.header("油槽參數設定")
-tank_name = st.sidebar.text_input("油槽名稱", value="油槽油泥分布圖")
+tank_name = st.sidebar.text_input("602 ", value="  Oil Tank_3D Sludge Distribution Map")
 radius = st.sidebar.number_input("油槽半徑(公尺)", value=45.73, min_value=0.1)
 height = st.sidebar.number_input("油槽高度(公尺)", value=3.0, min_value=0.1)
 grid_points = st.sidebar.slider("解析度(個點數)", min_value=10, max_value=100, value=50)
@@ -113,10 +113,10 @@ if (data is not None) and run_btn:
                 [0, height], color='gray', linewidth=1.2, alpha=frame_alpha)
 
     # 東南西北
-    compass = {'北':'北', '東':'東', '南':'南', '西':'西'}
+    compass = {'North':'North', 'East':'East', 'South':'South', 'West':'West'}
     a1_angle_rad = np.arctan2(scaled_y[0], scaled_x[0]) if len(scaled_x) > 0 else 0
     base_deg = np.degrees(a1_angle_rad) % 360
-    offsets = {'北':0, '東':90, '南':180, '西':270}
+    offsets = {'North':0, 'East':90, 'South':180, 'West':270}
     for key, ch in compass.items():
         deg = base_deg + offsets[key]
         rad = np.radians(deg)
@@ -137,9 +137,9 @@ if (data is not None) and run_btn:
                         color='black', fontsize=10, fontweight='bold', ha='center', va='bottom',
                         bbox=dict(facecolor='white', alpha=0.3, edgecolor='none'))
 
-    ax.set_xlabel('X (公尺)', fontsize=14, fontname=fontname)
-    ax.set_ylabel('Y (公尺)', fontsize=14, fontname=fontname)
-    ax.set_zlabel('高度 Z (公尺)', fontsize=14, fontname=fontname)
+    ax.set_xlabel('X (M)', fontsize=14, fontname=fontname)
+    ax.set_ylabel('Y (M)', fontsize=14, fontname=fontname)
+    ax.set_zlabel('Height Z (M)', fontsize=14, fontname=fontname)
     ax.set_title(tank_name, fontsize=22, fontweight='bold', loc='center',fontfamily=fontname)
     ax.set_xlim(scaled_radius, -scaled_radius)
     ax.set_ylim(scaled_radius, -scaled_radius)
@@ -171,6 +171,7 @@ if (data is not None) and run_btn:
     st.caption("Designed by Minda (油槽/可調參數/色階)")
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
+
 
 
 
