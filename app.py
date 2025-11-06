@@ -9,7 +9,7 @@ import io
 import matplotlib.font_manager as fm
 
 # 中文字型配置（多備一個總會有一種中！）
-plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'DFKai-SB', 'PMingLiU', 'Arial Unicode MS', 'Heiti TC', 'SimHei', 'sans-serif']
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'DFKai-SB', 'Arial Unicode MS', 'Heiti TC', 'SimHei', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False
 
 # --- 在 streamlit 主頁加入 ---
@@ -170,4 +170,5 @@ if (data is not None) and run_btn:
     st.caption("Designed by Minda (油槽/可調參數/色階)")
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
+
 
