@@ -140,7 +140,7 @@ if (data is not None) and run_btn:
     ax.set_xlabel('X (公尺)', fontsize=14, fontname=fontname)
     ax.set_ylabel('Y (公尺)', fontsize=14, fontname=fontname)
     ax.set_zlabel('高度 Z (公尺)', fontsize=14, fontname=fontname)
-    ax.set_title(tank_name, fontsize=22, fontweight='bold', loc='center')
+    ax.set_title(tank_name, fontsize=22, fontweight='bold', loc='center',fontfamily=fontname)
     ax.set_xlim(scaled_radius, -scaled_radius)
     ax.set_ylim(scaled_radius, -scaled_radius)
     ax.set_zlim(0, height)
@@ -154,7 +154,7 @@ if (data is not None) and run_btn:
         plt.cm.ScalarMappable(norm=norm, cmap=custom_cmap),
         cax=ax2, orientation='vertical', shrink=0.7, aspect=7
     )
-    cb1.set_label('高度 (公尺)', fontsize=14, fontfamily='Microsoft JhengHei')
+    cb1.set_label('高度 (公尺)', fontsize=14, fontfamily='fontfamily=fontname')
     tick_values = np.linspace(z_min, z_max, 8)
     cb1.set_ticks(tick_values)
     cb1.set_ticklabels([f"{v:.1f}" for v in tick_values])
@@ -171,6 +171,7 @@ if (data is not None) and run_btn:
     st.caption("Designed by Minda (油槽/可調參數/色階)")
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
+
 
 
 
