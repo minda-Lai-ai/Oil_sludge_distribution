@@ -126,7 +126,7 @@ if (data is not None) and run_btn:
     # 外圍線
     ax.plot(
         x_top_circle, y_top_circle, z_top_circle, 
-        color='blue', linewidth=2.5, alpha=1.0, zorder=1000
+        color='BLACK', linewidth=1.5, alpha=1.0, zorder=1000
     )
     #MINDA
     
@@ -195,6 +195,7 @@ st.markdown("""
 - 作者：Minda
 - 若此工具對你有幫助或遇到任何問題，歡迎聯絡/反饋！
 """)
+
 
 
 
