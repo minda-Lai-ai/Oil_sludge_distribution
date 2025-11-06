@@ -6,6 +6,24 @@ from matplotlib.colors import LinearSegmentedColormap
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
 import io
+import matplotlib.font_manager as fm
+
+# 中文字型配置（多備一個總會有一種中！）
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'DFKai-SB', 'PMingLiU', 'Arial Unicode MS', 'Heiti TC', 'SimHei', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False
+
+# --- 在 streamlit 主頁加入 ---
+st.markdown("""
+### 說明
+本程式可視化油槽內部油泥量之3D分布結果。支援 Excel 上傳與手動輸入座標，並可自訂油槽參數、柱狀圖顏色與透明度。  
+操作方式：
+- 設定左側參數與數據
+- 點擊「執行」可動態出圖，右側可下載 PNG 圖檔與原始數據
+
+### 作者聯絡
+- 作者：Minda
+- 若此工具對你有幫助或遇到任何問題，歡迎聯絡/反饋！
+""")
 
 # 頁面參數
 st.set_page_config(page_title="油槽內油泥分布圖", layout="wide")
@@ -152,3 +170,4 @@ if (data is not None) and run_btn:
     st.caption("Designed by Minda (油槽/可調參數/色階)")
 else:
     st.info("請輸入數據、參數並按左側『執行』。")
+
